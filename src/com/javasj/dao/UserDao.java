@@ -17,26 +17,26 @@ public interface UserDao {
 	* @Title: addUser 
 	* @Description: TODO(添加一个用户) 
 	* @param @param user  用户
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	*/
-	public void addUser(User user);
+	public int addUser(User user);
 	/**
 	* @Title: updateUser 
 	* @Description: TODO(更新用户) 
 	* @param @param user 用户
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	*/
-	public void updateUser(User user);
+	public int updateUser(User user);
 	/**
 	* @Title: deleteUser 
 	* @Description: TODO(删除一个用户) 
 	* @param @param id  根据用户编号删除
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	*/
-	public void deleteUser(int id);
+	public int deleteUser(int id);
 	/**
 	* @Title: findUserById 
 	* @Description: TODO(根据用户编号查找一个用户) 

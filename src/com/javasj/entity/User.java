@@ -43,11 +43,15 @@ public class User {
 	/**
 	 * 是否是管理员
 	 */
-	private boolean isAdmin;
+	private int isAdmin;
 	/**
 	 * 加入公司时间
 	 */
 	private Date joinTime;
+	/**
+	 * 当前用户状态
+	 */
+	private int status;
 	public int getUserId() {
 		return userId;
 	}
@@ -90,10 +94,10 @@ public class User {
 	public void setUserPlace(String userPlace) {
 		this.userPlace = userPlace;
 	}
-	public boolean isAdmin() {
+	public int getIsAdmin() {
 		return isAdmin;
 	}
-	public void setAdmin(boolean isAdmin) {
+	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 	public Date getJoinTime() {
@@ -102,11 +106,42 @@ public class User {
 	public void setJoinTime(Date joinTime) {
 		this.joinTime = joinTime;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", userSex=" + userSex
 				+ ", userBirthday=" + userBirthday + ", userPhoneNumber=" + userPhoneNumber + ", userPlace=" + userPlace
-				+ ", isAdmin=" + isAdmin + ", joinTime=" + joinTime + "]";
+				+ ", isAdmin=" + isAdmin + ", joinTime=" + joinTime + ", status=" + status + "]";
+	}
+	public User() {
+		super();
+	}
+	public User(String userName, String password, int userSex, Date userBirthday, String userPhoneNumber,String userPlace, int isAdmin) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.userSex = userSex;
+		this.userBirthday = userBirthday;
+		this.userPhoneNumber = userPhoneNumber;
+		this.userPlace = userPlace;
+		this.isAdmin = isAdmin;
+	}
+	public User(int userId, String userName, String password, int userSex, Date userBirthday, String userPhoneNumber,String userPlace, int isAdmin, int status) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.userSex = userSex;
+		this.userBirthday = userBirthday;
+		this.userPhoneNumber = userPhoneNumber;
+		this.userPlace = userPlace;
+		this.isAdmin = isAdmin;
+		this.status = status;
 	}
 	
 }

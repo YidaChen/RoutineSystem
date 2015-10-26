@@ -16,26 +16,26 @@ public interface ReplyDao {
 	* @Title: addReply 
 	* @Description: TODO(添加一个消息回复) 
 	* @param @param reply  消息回复对象 
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	*/
-	public void addReply(Reply reply);
+	public int addReply(Reply reply);
 	/**
 	* @Title: updateReply 
 	* @Description: TODO(更新回复消息内容) 
 	* @param @param reply 回复对象
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	 */
-	public void updateReply(Reply reply);
+	public int updateReply(Reply reply);
 	/**
 	* @Title: deleteReply 
 	* @Description: TODO(删除回复) 
 	* @param @param replyId  回复编号
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	 */
-	public void deleteReply(int replyId);
+	public int deleteReply(int replyId);
 	/**
 	* @Title: findReplyByMessageId 
 	* @Description: TODO(根据消息编号带分页来查询该消息回复列表) 

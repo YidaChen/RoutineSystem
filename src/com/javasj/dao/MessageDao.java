@@ -17,26 +17,26 @@ public interface MessageDao {
 	* @Title: addMessage 
 	* @Description: TODO(添加一条消息) 
 	* @param @param message  消息对象
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	*/
-	public void addMessage(Message message);
+	public int addMessage(Message message);
 	/**
 	* @Title: updateMessage 
 	* @Description: TODO(更新一条消息) 
 	* @param @param message 消息对象
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	*/
-	public void updateMessage(Message message);
+	public int updateMessage(Message message);
 	/**
 	* @Title: deleteMessage 
 	* @Description: TODO(删除一条消息) 
 	* @param @param messageId    消息编号
-	* @return void    返回类型 
+	* @return int    返回类型 
 	* @throws
 	*/
-	public void deleteMessage(int messageId);
+	public int deleteMessage(int messageId);
 	/**
 	* @Title: findMessageById 
 	* @Description: TODO(根据消息编号来加载一个消息) 

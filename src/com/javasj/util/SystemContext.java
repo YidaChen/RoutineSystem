@@ -2,7 +2,7 @@ package com.javasj.util;
 /**
  * 
 * @ClassName: SystemContext 
-* @Description: TODO(这里用一句话描述这个类的作用) 
+* @Description: TODO(对分页和模糊查询的一个基本类) 
 * @author 王小圈 
 * @date 2015年10月26日 下午10:45:27 
 *
