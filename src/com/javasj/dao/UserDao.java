@@ -65,4 +65,21 @@ public interface UserDao {
 	* @throws
 	 */
 	public List<User> findUserByUserInfo(User user,Page page);
+	/**
+	* @Title: findUserCount 
+	* @Description: TODO(查询用户总数) 
+	* @param @return  用户总数
+	* @return int    返回类型 
+	* @throws
+	*/
+	public int findUserCount();
+	/**
+	* @Title: findUserCountByUserInfo 
+	* @Description: TODO(更具用户传来信息查找用户总数) 
+	* @param @param user 用户对象
+	* @param @return  用户总数
+	* @return int    返回类型 
+	* @throws
+	 */
+	public int findUserCountByUserInfo(User user);
 }
