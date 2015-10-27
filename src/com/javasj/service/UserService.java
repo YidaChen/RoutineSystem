@@ -1,18 +1,19 @@
-package com.javasj.dao;
+package com.javasj.service;
 
 import java.util.List;
 
 import com.javasj.entity.User;
 import com.javasj.util.Page;
+
 /**
 * 
-* @ClassName: UserDao 
-* @Description: TODO(用户管理的接口) 
+* @ClassName: UserService 
+* @Description: TODO(用户管理接口) 
 * @author 王小圈 
-* @date 2015年10月26日 下午10:52:10 
+* @date 2015年10月27日 上午10:30:37 
 *
 */
-public interface UserDao {
+public interface UserService {
 	/**
 	* @Title: addUser 
 	* @Description: TODO(添加一个用户) 
@@ -58,13 +59,13 @@ public interface UserDao {
 	/**
 	* @Title: findUserByUserInfo 
 	* @Description: TODO(根据用户用户所传来的信息来分页查找用户) 
+	* @param @param user 用户对象
 	* @param @param page 分页对象
-	* @param @param addsql sql语句
 	* @param @return    返回用户列表
 	* @return List<User>   返回类型 
 	* @throws
 	 */
-	public List<User> findUserByUserInfo(Page page,String addsql);
+	public List<User> findUserByUserInfo(User user,Page page);
 	/**
 	* @Title: findUserCount 
 	* @Description: TODO(查询用户总数) 
@@ -76,10 +77,10 @@ public interface UserDao {
 	/**
 	* @Title: findUserCountByUserInfo 
 	* @Description: TODO(更具用户传来信息查找用户总数) 
-	* @param @param addsql sql语句
+	* @param @param user 用户对象
 	* @param @return  用户总数
 	* @return int    返回类型 
 	* @throws
 	 */
-	public int findUserCountByUserInfo(String addsql);
+	public int findUserCountByUserInfo(User user);
 }

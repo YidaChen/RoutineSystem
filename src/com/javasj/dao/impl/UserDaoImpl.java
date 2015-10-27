@@ -106,9 +106,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	}
 
 	@Override
-	public List<User> findUserByUserInfo(User userinfo, Page page) {
+	public List<User> findUserByUserInfo(Page page,String addsql) {
 		String sql="select * from t_user where 1=1 ";
-		sql+=addSql(userinfo);
+		sql+=addsql;
 		sql+=" and userId limit ?,?";
 		List<User> userlist=new ArrayList<User>();
 		Connection conn=null;
@@ -164,10 +164,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	}
 
 	@Override
-	public int findUserCountByUserInfo(User user) {
+	public int findUserCountByUserInfo(String addsql) {
 		int count=0;
 		String sql="select count(1) from t_user where 1=1 ";
-		sql+=addSql(user);
+		sql+=addsql;
 		Connection conn=this.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -183,18 +183,5 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 			this.closeAll(conn, null, rs, pstmt);
 		}
 		return count;
-	}
-	public String addSql(User user){
-		String sql="";
-		if(user!=null){
-			sql+=user.getUserName()!=null&&!user.getUserName().equals("")?"and userName like '%"+user.getUserName()+"%'":"";
-			sql+=user.getUserPlace()!=null&&!user.getUserPlace().equals("")?"and userPlace like '%"+user.getUserPlace()+"%'":"";
-			sql+=user.getUserSex()!=0?"and userSex ="+user.getUserSex():"";
-			sql+=user.getStatus()!=0?"and status ="+user.getStatus():"";
-			sql+=user.getIsAdmin()!=0?"and isAdmin ="+user.getIsAdmin():"";
-			sql+=user.getUserBirthday()!=null?"and userBirthDay <'"+user.getUserBirthday()+"'":"";
-			sql+=user.getJoinTime()!=null?"and joinTime <'"+user.getJoinTime()+"'":"";
-		}
-		return sql;
 	}
 }
