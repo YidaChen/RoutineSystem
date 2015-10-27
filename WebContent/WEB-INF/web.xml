@@ -9,4 +9,20 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.javasj.web.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FileManagerServlet</servlet-name>
+    <servlet-class>com.javasj.web.FileManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileManagerServlet</servlet-name>
+    <url-pattern>/filemanage</url-pattern>
+  </servlet-mapping>
 </web-app>
