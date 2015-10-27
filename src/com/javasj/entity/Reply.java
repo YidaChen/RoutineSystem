@@ -61,5 +61,10 @@ public class Reply {
 	public void setMessage(Message message) {
 		this.message = message;
 	}
+	@Override
+	public String toString() {
+		return "Reply [replyId=" + replyId + ", replyContext=" + replyContext + ", user=" + user + ", replyDate="
+				+ replyDate + ", message=" + message + "]";
+	}
 	
 }
