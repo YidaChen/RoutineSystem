@@ -1,10 +1,11 @@
-package com.javasj.service;
+package com.javasj.service.impl;
 
 import java.util.List;
 
 import com.javasj.dao.UserDao;
 import com.javasj.dao.impl.UserDaoImpl;
 import com.javasj.entity.User;
+import com.javasj.service.UserService;
 import com.javasj.util.Page;
 
 public class UserServiceImpl implements UserService {

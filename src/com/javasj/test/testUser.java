@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Test;
 import com.javasj.entity.User;
 import com.javasj.service.UserService;
-import com.javasj.service.UserServiceImpl;
+import com.javasj.service.impl.UserServiceImpl;
 import com.javasj.util.Page;
 
 public class testUser {

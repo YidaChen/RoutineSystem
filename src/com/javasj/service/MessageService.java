@@ -1,18 +1,19 @@
-package com.javasj.dao;
+package com.javasj.service;
 
 import java.util.List;
 
 import com.javasj.entity.Message;
 import com.javasj.util.Page;
+
 /**
 * 
-* @ClassName: MessageDao 
+* @ClassName: MessageService 
 * @Description: TODO(消息管理接口) 
 * @author 王小圈 
-* @date 2015年10月26日 下午11:00:47 
+* @date 2015年10月27日 上午11:20:00 
 *
 */
-public interface MessageDao {
+public interface MessageService {
 	/**
 	* @Title: addMessage 
 	* @Description: TODO(添加一条消息) 
@@ -59,12 +60,12 @@ public interface MessageDao {
 	* @Title: findAllMessageByMessageInfo 
 	* @Description: TODO(根据消息信息带分页来查找消息列表) 
 	* @param @param page  分页对象
-	* @param @param addsql sql语句
+	* @param @param message Message语句
 	* @param @return  消息列表
 	* @return List<Message>    返回类型 
 	* @throws
 	*/
-	public List<Message> findAllMessageByMessageInfo(Page page,String addsql);
+	public List<Message> findAllMessageByMessageInfo(Page page,Message message);
 	/**
 	* @Title: findAllCount 
 	* @Description: TODO(查询消息总数) 
@@ -76,10 +77,10 @@ public interface MessageDao {
 	/**
 	* @Title: findAllCountByMessageInfo 
 	* @Description: TODO(带条件查询消息总数) 
-	* @param @param addsql sql语句
+	* @param @param message Message语句
 	* @param @return 消息总数
 	* @return int    返回类型 
 	* @throws
 	 */
-	public int findAllCountByMessageInfo(String addsql);
+	public int findAllCountByMessageInfo(Message message);
 }

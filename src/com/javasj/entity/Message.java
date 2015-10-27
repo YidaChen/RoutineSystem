@@ -61,5 +61,10 @@ public class Message {
 	public void setPublicTime(Date publicTime) {
 		this.publicTime = publicTime;
 	}
+	@Override
+	public String toString() {
+		return "Message [messageId=" + messageId + ", messageTitle=" + messageTitle + ", messageContent="
+				+ messageContent + ", user=" + user + ", publicTime=" + publicTime + "]";
+	}
 	
 }
