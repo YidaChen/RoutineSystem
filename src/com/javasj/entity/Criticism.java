@@ -61,5 +61,10 @@ public class Criticism {
 	public void setMessage(Message message) {
 		this.message = message;
 	}
+	@Override
+	public String toString() {
+		return "Criticism [criticismId=" + criticismId + ", crititcismContent=" + crititcismContent + ", criticismTime="
+				+ criticismTime + ", user=" + user + ", message=" + message + "]";
+	}
 	
 }

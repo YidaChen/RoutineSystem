@@ -11,7 +11,7 @@ import com.javasj.service.MessageService;
 import com.javasj.service.impl.MessageServiceImpl;
 import com.javasj.util.Page;
 
-public class TestMessage {
+public class testMessage {
 	@Test
 	public void addMessage(){
 		MessageService messageService=new MessageServiceImpl(); 
