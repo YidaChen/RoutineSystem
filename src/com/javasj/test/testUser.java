@@ -20,7 +20,7 @@ public class testUser {
 	@Test
 	public void updateUser(){
 		UserService userService=new UserServiceImpl();
-		User user=new User(2,"zhangsan", "123", 1, new Date(), "11111111111", "黑龙江", 1, 0);
+		User user=new User(4,"zhangsan", "123", 1, new Date(), "11111111111", "黑龙江", 1, 0);
 		int result=userService.updateUser(user);
 		System.out.println(result);
 	}

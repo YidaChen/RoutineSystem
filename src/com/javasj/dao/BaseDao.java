@@ -35,7 +35,7 @@ public class BaseDao {
     /**
 	 * 获取数据库连接对象。
 	 */
-	public Connection getConnection() {
+	protected Connection getConnection() {
 		if(conn==null){
 			// 获取连接并捕获异常
 			try {
@@ -57,7 +57,7 @@ public class BaseDao {
 	* @return void    返回类型 
 	* @throws
 	 */
-	public void closeAll(Connection conn, Statement stmt, ResultSet rs,PreparedStatement pstmt) {
+	protected void closeAll(Connection conn, Statement stmt, ResultSet rs,PreparedStatement pstmt) {
 		// 若结果集对象不为空，则关闭
 		if (rs != null) {
 			try {

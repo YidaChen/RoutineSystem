@@ -81,6 +81,27 @@ public interface UserService {
 	* @param @return  用户总数
 	* @return int    返回类型 
 	* @throws
-	 */
+	*/
 	public int findUserCountByUserInfo(User user);
+	/**
+	* 
+	* @Title: findUserByUserName 
+	* @Description: TODO(根据用户名查找用户) 
+	* @param @param username 用户名
+	* @param @return   返回一个用户对象
+	* @return User    返回类型 
+	* @throws
+	 */
+	public User findUserByUserName(String username);
+	/**
+	* 
+	* @Title: UserLogin 
+	* @Description: TODO(用户登陆) 
+	* @param @param username 用户名
+	* @param @param password 密码
+	* @param @return   返回用户对象
+	* @return User    返回类型 
+	* @throws
+	*/
+	public User userLogin(String username,String password);
 }

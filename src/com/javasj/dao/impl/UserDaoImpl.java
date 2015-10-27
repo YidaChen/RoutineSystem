@@ -184,4 +184,37 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		}
 		return count;
 	}
+
+	@Override
+	public User findUserByUserName(String username) {
+		String sql="select * from t_user where userName=?";
+		User user =null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			conn = this.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setObject(1,username);
+			rs =pstmt.executeQuery();
+			if (rs.next()) {
+				user =new User();
+				user.setUserId(rs.getInt("userId"));
+				user.setUserName(rs.getString("userName"));
+				user.setPassword(rs.getString("password"));
+				user.setUserSex(rs.getInt("userSex"));
+				user.setUserBirthday(rs.getDate("userBirthDay"));
+				user.setUserPhoneNumber(rs.getString("userPhoneNumber"));
+				user.setUserPlace(rs.getString("userPlace"));
+				user.setJoinTime(rs.getDate("joinTime"));
+				user.setIsAdmin(rs.getInt("isAdmin"));
+				user.setStatus(rs.getInt("status"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			this.closeAll(conn, null, rs, pstmt);
+		}
+		return user;
+	}
 }

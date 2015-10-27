@@ -6,7 +6,9 @@ import com.javasj.dao.UserDao;
 import com.javasj.dao.impl.UserDaoImpl;
 import com.javasj.entity.User;
 import com.javasj.service.UserService;
+import com.javasj.util.MD5Util;
 import com.javasj.util.Page;
+import com.javasj.util.StringUtil;
 
 public class UserServiceImpl implements UserService {
 	UserDao userdao=new UserDaoImpl();
@@ -52,8 +54,8 @@ public class UserServiceImpl implements UserService {
 	public String addSql(User user){
 		String sql="";
 		if(user!=null){
-			sql+=user.getUserName()!=null&&!user.getUserName().equals("")?"and userName like '%"+user.getUserName()+"%'":"";
-			sql+=user.getUserPlace()!=null&&!user.getUserPlace().equals("")?"and userPlace like '%"+user.getUserPlace()+"%'":"";
+			sql+=StringUtil.isNull(user.getUserName())?"and userName like '%"+user.getUserName()+"%'":"";
+			sql+=StringUtil.isNull(user.getUserPlace())?"and userPlace like '%"+user.getUserPlace()+"%'":"";
 			sql+=user.getUserSex()!=0?"and userSex ="+user.getUserSex():"";
 			sql+=user.getStatus()!=0?"and status ="+user.getStatus():"";
 			sql+=user.getIsAdmin()!=0?"and isAdmin ="+user.getIsAdmin():"";
@@ -62,4 +64,17 @@ public class UserServiceImpl implements UserService {
 		}
 		return sql;
 	}
+	@Override
+	public User findUserByUserName(String username) {
+		return userdao.findUserByUserName(username);
+	}
+	@Override
+	public User userLogin(String username, String password) {
+		User user=this.findUserByUserName(username);
+		if(user.getPassword().equals(MD5Util.md5(password))) return user;
+		else return null;
+	}
+
+	
+
 }

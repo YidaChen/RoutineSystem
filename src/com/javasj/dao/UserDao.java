@@ -82,4 +82,14 @@ public interface UserDao {
 	* @throws
 	 */
 	public int findUserCountByUserInfo(String addsql);
+	/**
+	* 
+	* @Title: findUserByUserName 
+	* @Description: TODO(根据用户名查找用户) 
+	* @param @param username 用户名
+	* @param @return   返回一个用户对象
+	* @return User    返回类型 
+	* @throws
+	 */
+	public User findUserByUserName(String username);
 }
