@@ -10,6 +10,7 @@ import com.javasj.entity.Message;
 import com.javasj.entity.User;
 import com.javasj.service.MessageService;
 import com.javasj.service.impl.MessageServiceImpl;
+import com.javasj.util.StringUtil;
 
 public class MessageServlet extends HttpServlet {
 	MessageService messageService=new MessageServiceImpl();
@@ -29,6 +30,7 @@ public class MessageServlet extends HttpServlet {
 			publicMessage(request,response);
 			break;
 		case 2:
+			loadMessage(request,response);
 			break;
 		case 3:
 			break;
@@ -48,7 +50,7 @@ public class MessageServlet extends HttpServlet {
 	* @param @param response    设定文件 
 	* @return void    返回类型 
 	* @throws
-	 */
+	*/
 	private void publicMessage(HttpServletRequest request, HttpServletResponse response) {
 		User user=(User) request.getSession().getAttribute("userstatus");
 		if(user!=null){
@@ -66,5 +68,30 @@ public class MessageServlet extends HttpServlet {
 			System.out.println("用户未登录，登录后发布信息");
 		}
 	}
-
+	/**
+	* 
+	* @Title: loadMessage 
+	* @Description: TODO(加载消息) 
+	* @param @param request
+	* @param @param response    设定文件 
+	* @return void    返回类型 
+	* @throws
+	 */
+	private void loadMessage(HttpServletRequest request, HttpServletResponse response) {
+		String messageid=request.getParameter("messageid");
+		int id=StringUtil.isNull(messageid)?Integer.parseInt(messageid):0;
+		if(id!=0){
+			Message message=messageService.findMessageById(id);
+			if(message!=null){
+				request.setAttribute("message", message);
+				try {
+					request.getRequestDispatcher("messageInfo.jsp").forward(request, response);
+				} catch (ServletException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }

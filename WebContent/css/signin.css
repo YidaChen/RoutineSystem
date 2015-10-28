@@ -37,3 +37,11 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.messagecontent{
+	border: solid 1px;
+    border-radius: 25px;
+    padding: 20px;
+}
+.messagecontent h2{
+	text-align: center;
+}

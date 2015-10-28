@@ -54,60 +54,23 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 					<li><a href="#">用户注册</a></li>
 				</ul>
 			</nav>
-			<h3 class="text-muted">日常事务管理系统用户登录</h3>
+			<h3 class="text-muted">日常事务管理系统</h3>
 		</div>
-
-		<div class="jumbotron">
-			<%=htmlData%>
-			<table class="table table-bordered">
-				<tr>
-					<td>编号</td>
-					<td>标题</td>
-					<td>发布时间</td>
-					<td>发布人</td>
-					<td>回复</td>
-					<td>操作</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>测试消息</td>
-					<td>2015年10月28日03:35:51</td>
-					<td>admin</td>
-					<td>10</td>
-					<td><a href="message?option=2&messageid=2">查看</a></td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>测试消息</td>
-					<td>2015年10月28日03:35:51</td>
-					<td>admin</td>
-					<td>10</td>
-					<td><a href="#">查看</a></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>测试消息</td>
-					<td>2015年10月28日03:35:51</td>
-					<td>admin</td>
-					<td>10</td>
-					<td><a href="#">查看</a></td>
-				</tr>
-			</table>
+		<div class="messagecontent">
+			<h2>${message.messageTitle }</h2>
+			${message.messageContent }
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-10">
+				<br/>
+		    	<button type="button" class="btn btn-success"  name="btn_reply">我要回复</button>
+			</div>
 		</div>
 		<form class="form-horizontal" action="message?option=1" method="post">
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-10">
-					<h2>我也发一手</h2>
+					<h2>消息回复</h2>
 				</div>
-		  	</div>
-			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-1 control-label">标题</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" name="messagetitle" placeholder="标题">
-			    </div>
-		  	</div>
-		  	<div class="form-group">
-				<label for="inputEmail3" class="col-sm-1 control-label">内容</label>
 		  	</div>
 			<div class="form-group">
 				 <div class="col-sm-10">

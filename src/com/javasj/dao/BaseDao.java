@@ -36,8 +36,16 @@ public class BaseDao {
 	 * 获取数据库连接对象。
 	 */
 	protected Connection getConnection() {
-		if(conn==null){
+		if(conn!=null){
 			// 获取连接并捕获异常
+			try {
+				if(conn.isClosed())
+				conn = DriverManager.getConnection(URL, USER, PASSWORD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else{
 			try {
 				Class.forName(DRIVER);
 				conn = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -66,6 +74,14 @@ public class BaseDao {
 				e.printStackTrace();
 			}
 		}
+		//若预编译对象不为空，则关闭
+		if(pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		// 若Statement对象不为空，则关闭
 		if (stmt != null) {
 			try {
@@ -82,14 +98,6 @@ public class BaseDao {
 				e.printStackTrace();
 			}
 		}
-		//若预编译对象不为空，则关闭
-		if(pstmt != null) {
-			try {
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 	/**
 	 * 增、删、改的操作
@@ -101,10 +109,7 @@ public class BaseDao {
 		PreparedStatement pstmt = null;
 		int num = 0;
 		try {
-			if(conn.isClosed()){
-				conn = null;
-				conn = this.getConnection();
-			}
+			conn = this.getConnection();
 			pstmt = conn.prepareStatement(preparedSql);
 			if (param != null) {
 				for (int i = 0; i < param.length; i++) {
