@@ -37,10 +37,10 @@
 		</div>
 
 		<div class="jumbotron">
-			<form class="form-signin" action="index.jsp">
+			<form class="form-signin" action="user?option=1" method="post">
 				<h2 class="form-signin-heading">用户登录</h2><br /> 
-				<input type="text" id="inputEmail" class="form-control"placeholder="用户名" required="" autofocus=""> <br /> 
-				<input type="password" id="inputPassword" class="form-control" placeholder="密码" required="">
+				<input type="text" name="username" class="form-control"placeholder="用户名" required="" autofocus=""> <br /> 
+				<input type="password" name="password" class="form-control" placeholder="密码" required="">
 				<div class="row">
 					<div class="col-lg-6">
 						<a href="register.jsp"><button type="button"class="btn btn-info btn-lg btn-primary btn-block">注册</button></a>

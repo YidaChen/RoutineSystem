@@ -33,21 +33,21 @@
 		</div>
 
 		<div class="jumbotron">
-			<form class="form-signin" action="index.jsp">
+			<form class="form-signin" action="user?option=2" method="post">
 				<h2 class="form-signin-heading">用户注册</h2><br /> 
-				<input type="text"  class="form-control"placeholder="用户名" required="" autofocus=""> <br /> 
-				<input type="password" id="inputPassword" class="form-control" placeholder="密码" required=""><br/>
+				<input type="text" name="username" class="form-control"placeholder="用户名" required="" autofocus=""> <br /> 
+				<input type="password" name="password" class="form-control" placeholder="密码" required=""><br/>
 				<label class="radio-inline">  <input type="radio" name="usersex"  value="1" checked="checked"> 男 </label>
 				<label class="radio-inline"> <input type="radio" name="usersex"  value="2"> 女 </label> <br/><br/>
-				<input type="text"  class="form-control"placeholder="电话号码" required="" autofocus=""> <br /> 
-				<input type="text"  class="form-control"placeholder="居住地" required="" autofocus=""> <br /> 
-				<div class="input-group date" id="userbirthday">
+				<input type="text" name="phonenumber" class="form-control"placeholder="电话号码" required="" autofocus=""> <br /> 
+				<input type="text" name="userplace" class="form-control"placeholder="居住地" required="" autofocus=""> <br /> 
+				<div class="input-group date" name="userbirthday" id="userbirthday">
 					<input type="text" name="userbirthday" class="form-control">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
                 <br/>
-				<button type="button"class="btn btn-info btn-lg btn-primary btn-block">注册</button>
+				<button type="submit"class="btn btn-info btn-lg btn-primary btn-block">注册</button>
 			</form>
 		</div>
 		<footer class="footer">

@@ -97,12 +97,14 @@ public class BaseDao {
 	 * @param param 预编译的 SQL 语句中的'?'参数的字符串数组          
 	 * @return 影响的行数
 	 */
-	public int exceuteUpdate(String preparedSql, Object[] param) {
-		this.getConnection();
+	protected int exceuteUpdate(String preparedSql, Object[] param) {
 		PreparedStatement pstmt = null;
 		int num = 0;
 		try {
-			conn =  getConnection();
+			if(conn.isClosed()){
+				conn = null;
+				conn = this.getConnection();
+			}
 			pstmt = conn.prepareStatement(preparedSql);
 			if (param != null) {
 				for (int i = 0; i < param.length; i++) {

@@ -22,7 +22,7 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 <script charset="utf-8" src="<%=basePath %>js/plugins/code/prettify.js"></script>
 <script>
 		KindEditor.ready(function(K) {
-			var editor1 = K.create('textarea[name="content1"]', {
+			var editor1 = K.create('textarea[name="messagecontent"]', {
 				cssPath : '<%=basePath %>js/plugins/code/prettify.css',
 				uploadJson : '<%=basePath %>upload',
 				fileManagerJson : '<%=basePath %>filemanage',
@@ -94,7 +94,7 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 				</tr>
 			</table>
 		</div>
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="message?option=1" method="post">
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-10">
 					<h2>我也发一手</h2>
@@ -103,7 +103,7 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-1 control-label">标题</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputEmail3" placeholder="标题">
+			      <input type="text" class="form-control" name="messagetitle" placeholder="标题">
 			    </div>
 		  	</div>
 		  	<div class="form-group">
@@ -111,7 +111,7 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 		  	</div>
 			<div class="form-group">
 				 <div class="col-sm-10">
-					<textarea name="content1" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"><%=htmlspecialchars(htmlData)%></textarea>
+					<textarea name="messagecontent" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"><%=htmlspecialchars(htmlData)%></textarea>
 			    </div>
 		  	</div>
 			<div class="form-group">

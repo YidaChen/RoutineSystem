@@ -21,8 +21,9 @@ public class DateUtil {
 	* @return Date    返回类型 
 	* @throws
 	 */
-	public static Date fmtStrToDate(String dtFormat) {  
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+	public static Date fmtStrToDate(String dtFormat) { 
+		dtFormat=dtFormat.substring(0, dtFormat.indexOf("PM")).trim();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");  
     	try {
 			return dateFormat.parse(dtFormat);
 		} catch (ParseException e) {

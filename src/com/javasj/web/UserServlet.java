@@ -1,7 +1,6 @@
 package com.javasj.web;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -64,9 +63,17 @@ public class UserServlet extends HttpServlet {
 		if(user!=null){
 			request.getSession().setAttribute("userstatus", user);
 			if(user.getIsAdmin()==1)
-				System.out.println("管理员");
+				try {
+					response.sendRedirect("index.jsp");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			else
-				System.out.println("普通用户");
+				try {
+					response.sendRedirect("index.jsp");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		}else{
 			System.out.println("用户名或密码错误");
 		}
@@ -86,7 +93,7 @@ public class UserServlet extends HttpServlet {
 		if(user!=null){
 			//用户已经存在，不允许用户注册
 		}else{
-			user=new User(username, request.getParameter("password"), Integer.parseInt(request.getParameter("sex")), new Date(), request.getParameter("phonenumber"), request.getParameter("userplace"), 2);
+			user=new User(username, request.getParameter("password"), Integer.parseInt(request.getParameter("usersex")), DateUtil.fmtStrToDate(request.getParameter("userbirthday")), request.getParameter("phonenumber"), request.getParameter("userplace"), 2);
 			if(userService.addUser(user)>0)
 				System.out.println("注册或添加成功");
 			else
