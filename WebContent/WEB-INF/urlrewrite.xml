@@ -54,6 +54,26 @@
 	</rule>
 	
 	<rule>
+		<from>^/manage.html</from>
+		<to>/manage</to>
+	</rule>
+	
+	<rule>
+		<from>^/manage_([0-9]+).html</from>
+		<to>/manage?option=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/manage_([0-9]+)_([0-9]+).html</from>
+		<to>/manage?option=$1&amp;Id=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/manage_([0-9]+)_([0-9]+)_([0-9]+).html</from>
+		<to>/manage?option=$1&amp;pagesize=$2&amp;index=$3</to>
+	</rule>
+	
+	<rule>
 		<from>^/user_([0-9]+).html</from>
         <to>/user?option=$1</to>
 	</rule>

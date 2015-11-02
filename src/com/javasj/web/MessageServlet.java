@@ -42,10 +42,6 @@ public class MessageServlet extends HttpServlet {
 		case 3:
 			listMessage(request,response);
 			break;
-		case 4:
-			break;
-		case 5:
-			break;
 		default:
 			break;
 		}
@@ -68,12 +64,27 @@ public class MessageServlet extends HttpServlet {
 			message.setMessageTitle(request.getParameter("messagetitle"));
 			message.setUser(user);
 			if(messageService.addMessage(message)>0){
-				System.out.println("添加成功");
+				try {
+					request.setAttribute("erroinfo", "发布成功");
+					request.getRequestDispatcher("result.jsp").forward(request, response);
+				} catch (ServletException | IOException e) {
+					e.printStackTrace();
+				}
 			}else{
-				System.out.println("添加失败");
+				try {
+					request.setAttribute("erroinfo", "发布失败");
+					request.getRequestDispatcher("result.jsp").forward(request, response);
+				} catch (ServletException | IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}else{
-			System.out.println("用户未登录，登录后发布信息");
+			try {
+				request.setAttribute("erroinfo", "对不起您未登录");
+				request.getRequestDispatcher("result.jsp").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	/**
@@ -113,6 +124,14 @@ public class MessageServlet extends HttpServlet {
 			}
 		}
 	}
+	/**
+	* @Title: listMessage 
+	* @Description: TODO(消息列表) 
+	* @param @param request
+	* @param @param response    设定文件 
+	* @return void    返回类型 
+	* @throws
+	 */
 	private void listMessage(HttpServletRequest request, HttpServletResponse response) {
 		Page page=new Page();
 		String index=request.getParameter("index");

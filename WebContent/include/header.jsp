@@ -10,7 +10,7 @@
 					<li><a href="#">${sessionScope.userstatus.userName}</a></li>
 					<c:choose>
 						<c:when test="${sessionScope.userstatus.isAdmin==1}">
-							<li><a href="#">管理用户</a></li>
+							<li><a href="manage.html">管理中心</a></li>
 						</c:when>
 					</c:choose>
 				</c:when>

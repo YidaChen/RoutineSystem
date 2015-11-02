@@ -36,12 +36,6 @@ public class UserServlet extends HttpServlet {
 		case 2:
 			userRegist(request,response);
 			break;
-		case 3:
-			userDelete(request,response);
-			break;
-		case 4:
-			userList(request,response);
-			break;
 		case 5:
 			userListByUserInfo(request,response);
 			break;
@@ -64,7 +58,7 @@ public class UserServlet extends HttpServlet {
 			request.getSession().setAttribute("userstatus", user);
 			if(user.getIsAdmin()==1)
 				try {
-					response.sendRedirect("index.html");
+					response.sendRedirect("manage.html");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -122,48 +116,6 @@ public class UserServlet extends HttpServlet {
 				}
 			}
 		}
-	}
-	/**
-	* 
-	* @Title: userDelete 
-	* @Description: TODO(这里用一句话描述这个方法的作用) 
-	* @param @param request
-	* @param @param response    设定文件 
-	* @return void    返回类型 
-	* @throws
-	*/
-	private void userDelete(HttpServletRequest request, HttpServletResponse response) {
-		String userId=request.getParameter("userId");
-		int id=userId!=null&&!userId.equals("")?Integer.parseInt(userId):0;
-		if(id!=0){
-			if(userService.deleteUser(id)>0){
-				System.out.println("删除成功");
-			}else{
-				System.out.println("删除失败");
-			}
-		}else{
-			System.out.println("未传入用户编号");
-		}
-	}
-	/**
-	* 
-	* @Title: userList 
-	* @Description: TODO(用户列表) 
-	* @param @param request
-	* @param @param response    设定文件 
-	* @return void    返回类型 
-	* @throws
-	*/
-	private void userList(HttpServletRequest request, HttpServletResponse response) {
-		Page page=new Page();
-		String index=request.getParameter("index");
-		String pagesize=request.getParameter("pagesize");
-		page.setIndex(StringUtil.isNull(index)?Integer.parseInt(index):1);
-		page.setPagesize(StringUtil.isNull(pagesize)?Integer.parseInt(pagesize):10);
-		List<User> listUser=userService.findAllUser(page);
-		page.setAllcount(userService.findUserCount());
-		page.setAllpage(page.getAllcount()%page.getPagesize()==0?page.getAllcount()/page.getPagesize():(page.getAllcount()/page.getPagesize())+1);
-		System.out.println(listUser);
 	}
 	private void userListByUserInfo(HttpServletRequest request, HttpServletResponse response) {
 		User user=new User();

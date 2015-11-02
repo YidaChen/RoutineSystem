@@ -64,4 +64,12 @@
     <servlet-name>ReplyServlet</servlet-name>
     <url-pattern>/reply</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ManageServlet</servlet-name>
+    <servlet-class>com.javasj.web.ManageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageServlet</servlet-name>
+    <url-pattern>/manage</url-pattern>
+  </servlet-mapping>
 </web-app>
