@@ -97,12 +97,30 @@ public class UserServlet extends HttpServlet {
 		User user=userService.findUserByUserName(username);
 		if(user!=null){
 			//用户已经存在，不允许用户注册
+			try {
+				request.setAttribute("erroinfo", "用户名已存在");
+				request.getRequestDispatcher("result.jsp").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
 		}else{
 			user=new User(username, request.getParameter("password"), Integer.parseInt(request.getParameter("usersex")), DateUtil.fmtStrToDate(request.getParameter("userbirthday")), request.getParameter("phonenumber"), request.getParameter("userplace"), 2);
-			if(userService.addUser(user)>0)
-				System.out.println("注册或添加成功");
-			else
-				System.out.println("注册或者添加失败");
+			if(userService.addUser(user)>0){
+				try {
+					request.setAttribute("erroinfo", "注册成功");
+					request.getRequestDispatcher("result.jsp").forward(request, response);
+				} catch (ServletException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else{
+				try {
+					request.setAttribute("erroinfo", "系统错误");
+					request.getRequestDispatcher("result.jsp").forward(request, response);
+				} catch (ServletException | IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	/**

@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
 		<div class="header clearfix">
-			<h3 class="text-muted">错误信息</h3>
+			<h3 class="text-muted">提示信息</h3>
 		</div>
 		<div class="jumbotron">
 			<h2 class="form-signin-heading"><font color="red">${erroinfo }</font></h2><br /> 

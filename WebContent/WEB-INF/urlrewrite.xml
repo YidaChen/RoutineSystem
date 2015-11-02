@@ -72,5 +72,15 @@
 		<from>^/message_([0-9]+)_([0-9]+)_([0-9]+).html</from>
         <to>/message?option=$1&amp;pagesize=$2&amp;index=$3</to>
 	</rule>
+	
+	<rule>
+		<from>^/message_([0-9]+)_([0-9]+)_([0-9]+)_([0-9]+).html</from>
+        <to>/message?option=$1&amp;messageid=$2&amp;pagesize=$3&amp;index=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/reply_([0-9]+)_([0-9]+).html</from>
+        <to>/reply?option=$1&amp;messageid=$2</to>
+	</rule>
 </urlrewrite>
 

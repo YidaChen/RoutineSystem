@@ -9,14 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javasj.entity.Message;
+import com.javasj.entity.Reply;
 import com.javasj.entity.User;
 import com.javasj.service.MessageService;
+import com.javasj.service.ReplyService;
 import com.javasj.service.impl.MessageServiceImpl;
+import com.javasj.service.impl.ReplyServiceImpl;
 import com.javasj.util.Page;
 import com.javasj.util.StringUtil;
 
 public class MessageServlet extends HttpServlet {
 	MessageService messageService=new MessageServiceImpl();
+	ReplyService replyService=new ReplyServiceImpl();
 	private static final long serialVersionUID = 1L;
     public MessageServlet() {
         super();
@@ -88,7 +92,18 @@ public class MessageServlet extends HttpServlet {
 			Message message=messageService.findMessageById(id);
 			if(message!=null){
 				request.setAttribute("message", message);
+				Page page=new Page();
+				String index=request.getParameter("index");
+				String pagesize=request.getParameter("pagesize");
+				page.setIndex(StringUtil.isNull(index)?Integer.parseInt(index):1);
+				page.setPagesize(StringUtil.isNull(pagesize)?Integer.parseInt(pagesize):10);
+				List<Reply> replyList=replyService.findReplyByMessageId(id, page);
+				int allcount =replyService.findCountByMessaggeId(id);
+				page.setAllcount(allcount);
+				page.setAllpage((allcount%page.getPagesize()==0)?allcount/page.getPagesize():allcount/page.getPagesize()+1);
 				try {
+					request.setAttribute("page", page);
+					request.setAttribute("replyList", replyList);
 					request.getRequestDispatcher("messageInfo.jsp").forward(request, response);
 				} catch (ServletException e) {
 					e.printStackTrace();

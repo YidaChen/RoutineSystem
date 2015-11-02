@@ -3,11 +3,16 @@
 <div class="header clearfix">
 	<nav>
 		<ul class="nav nav-pills pull-right">
-			<li class="active"><a href="index.html">主&nbsp;&nbsp;页</a></li>
+			<li><a href="index.html">主&nbsp;&nbsp;页</a></li>
 			<li><a href="message_3.html">消息查看</a></li>
 			<c:choose>
 				<c:when test="${sessionScope.userstatus!=null}">
 					<li><a href="#">${sessionScope.userstatus.userName}</a></li>
+					<c:choose>
+						<c:when test="${sessionScope.userstatus.isAdmin==1}">
+							<li><a href="#">管理用户</a></li>
+						</c:when>
+					</c:choose>
 				</c:when>
 				<c:otherwise>
 					<li><a href="login.html">用户登录</a></li>

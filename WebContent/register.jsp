@@ -12,7 +12,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>日常事务管理系统用户注册</title>
+<title>日常事务管理系统-用户注册</title>
 <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
 <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 <link href="css/jumbotron-narrow.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 	<div class="container">
 		<%@ include file="include/header.jsp"%>
 		<div class="jumbotron">
-			<form class="form-signin" action="user?option=2" method="post">
+			<form class="form-signin" action="user_2.html" method="post">
 				<h2 class="form-signin-heading">用户注册</h2><br /> 
 				<input type="text" name="username" class="form-control"placeholder="用户名" required="" autofocus=""> <br /> 
 				<input type="password" name="password" class="form-control" placeholder="密码" required=""><br/>
