@@ -20,18 +20,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
-					<li><a href="#">主&nbsp;&nbsp;页</a></li>
-					<li><a href="#">消息查看</a></li>
-					<li><a href="#">消息回复</a></li>
-					<li class="active"><a href="#">用户注册</a></li>
-				</ul>
-			</nav>
-			<h3 class="text-muted">日常事务管理系统用户登录</h3>
-		</div>
-
+		<%@ include file="include/header.jsp"%>
 		<div class="jumbotron">
 			<form class="form-signin" action="user?option=2" method="post">
 				<h2 class="form-signin-heading">用户注册</h2><br /> 

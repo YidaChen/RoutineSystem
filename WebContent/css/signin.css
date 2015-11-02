@@ -45,3 +45,6 @@ body {
 .messagecontent h2{
 	text-align: center;
 }
+.reply{
+	display: none;
+}

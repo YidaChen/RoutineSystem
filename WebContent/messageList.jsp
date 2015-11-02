@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>日常事务管理系统-首页</title>
+<title>日常事务管理系统-消息列表</title>
 <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
 <link href="css/jumbotron-narrow.css" rel="stylesheet">
 <link href="css/signin.css" rel="stylesheet">
@@ -36,33 +36,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</c:forEach>
 			</table>
-		</div>
-		<form class="form-horizontal" action="message_1.html" method="post">
-			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-10">
-					<h2>我也发一手</h2>
-				</div>
-		  	</div>
-			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-1 control-label">标题</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" name="messagetitle" placeholder="标题">
-			    </div>
-		  	</div>
-		  	<div class="form-group">
-				<label for="inputEmail3" class="col-sm-1 control-label">内容</label>
-		  	</div>
-			<div class="form-group">
-				 <div class="col-sm-10">
-					<textarea name="messagecontent" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"></textarea>
-			    </div>
-		  	</div>
-			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-10">
-		      		<button type="submit" class="btn btn-success"  name="button">全盘就绪：发射</button>
-				</div>
-			</div>
-		</form>
+			<ul class="pager">
+			<c:choose>
+				<c:when test="${page!=null}">
+					<c:choose>
+			        	<c:when test="${page.index==1}">
+							<li class="disabled"><a href="#">&larr;上一页</a></li>
+			        	</c:when>              
+			            <c:otherwise>
+			            	<li><a href="message_3_10_${page.index-1}.html">&larr;上一页</a></li>
+			            </c:otherwise>
+			        </c:choose>
+					<li><a href="#">${page.index}</a></li>
+					<c:choose>
+			        	<c:when test="${page.index==page.allpage}">
+							<li class="disabled"><a href="#">下一页&rarr;</a></li>
+			        	</c:when>              
+			            <c:otherwise>
+			            	<li><a href="message_3_10_${page.index+1}.html">下一页&rarr;</a></li>
+			            </c:otherwise>
+			        </c:choose>
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+			</c:choose>
+			当前：第${page.index }页,共：${page.allpage }页,每页：${page.pagesize }条数据,共${page.allcount }条数据
+			</ul>
+		</div>	
 		<footer class="footer">
 		<p>© Company 2015</p>
 		</footer>
@@ -70,33 +70,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- /container -->
 </body>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 <script charset="utf-8" src="<%=basePath %>js/kindeditor.js"></script>
 <script charset="utf-8" src="<%=basePath %>js/lang/zh_CN.js"></script>
 <script charset="utf-8" src="<%=basePath %>js/plugins/code/prettify.js"></script>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script>
-		KindEditor.ready(function(K) {
-			var editor1 = K.create('textarea[name="messagecontent"]', {
-				cssPath : '<%=basePath %>js/plugins/code/prettify.css',
-				uploadJson : '<%=basePath %>upload',
-				fileManagerJson : '<%=basePath %>filemanage',
-				allowFileManager : true,
-				afterCreate : function() {
-					var self = this;
-					K.ctrl(document, 13, function() {
-						self.sync();
-						document.forms['example'].submit();
-					});
-					K.ctrl(self.edit.doc, 13, function() {
-						self.sync();
-						document.forms['example'].submit();
-					});
-				}
-			});
-			prettyPrint();
+	KindEditor.ready(function(K) {
+		var editor1 = K.create('textarea[name="messagecontent"]', {
+			cssPath : '<%=basePath %>js/plugins/code/prettify.css',
+			uploadJson : '<%=basePath %>upload',
+			fileManagerJson : '<%=basePath %>filemanage',
+			allowFileManager : true,
+			afterCreate : function() {
+				var self = this;
+				K.ctrl(document, 13, function() {
+					self.sync();
+					document.forms['example'].submit();
+				});
+				K.ctrl(self.edit.doc, 13, function() {
+					self.sync();
+					document.forms['example'].submit();
+				});
+			}
 		});
+		prettyPrint();
+	});
 </script>
 </html>

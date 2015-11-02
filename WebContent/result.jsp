@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<head>
+<title>${erroinfo }</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
@@ -24,23 +24,19 @@
 </head>
 <body>
 	<div class="container">
-		<%@ include file="include/header.jsp"%>
-
+		<div class="header clearfix">
+			<h3 class="text-muted">错误信息</h3>
+		</div>
 		<div class="jumbotron">
-			<form class="form-signin" action="user_1.html" method="post">
-				<h2 class="form-signin-heading">用户登录</h2><br /> 
-				<input type="text" name="username" class="form-control"placeholder="用户名" required="" autofocus=""> <br /> 
-				<input type="password" name="password" class="form-control" placeholder="密码" required="">
-				<div class="row">
-					<div class="col-lg-6">
-						<a href="register.html"><button type="button"class="btn btn-info btn-lg btn-primary btn-block">注册</button></a>
-					</div>
-
-					<div class="col-lg-6">
-						<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-					</div>
+			<h2 class="form-signin-heading"><font color="red">${erroinfo }</font></h2><br /> 
+			<div class="row">
+				<div class="col-lg-6">
+					<a href="javascript:history.go(-1);"  ><button type="button"class="btn btn-info btn-lg btn-primary btn-block">返回上一层</button></a>
 				</div>
-			</form>
+				<div class="col-lg-6">
+					<a href="index.html"  ><button type="button"class="btn btn-info btn-lg btn-primary btn-block">返回主页</button></a>
+				</div>
+			</div>
 		</div>
 		<footer class="footer">
 		<p>© Company 2015</p>

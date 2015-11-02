@@ -1,6 +1,8 @@
 package com.javasj.web;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import com.javasj.entity.Message;
 import com.javasj.entity.User;
 import com.javasj.service.MessageService;
 import com.javasj.service.impl.MessageServiceImpl;
+import com.javasj.util.Page;
 import com.javasj.util.StringUtil;
 
 public class MessageServlet extends HttpServlet {
@@ -33,6 +36,7 @@ public class MessageServlet extends HttpServlet {
 			loadMessage(request,response);
 			break;
 		case 3:
+			listMessage(request,response);
 			break;
 		case 4:
 			break;
@@ -91,6 +95,26 @@ public class MessageServlet extends HttpServlet {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}
+		}
+	}
+	private void listMessage(HttpServletRequest request, HttpServletResponse response) {
+		Page page=new Page();
+		String index=request.getParameter("index");
+		String pagesize=request.getParameter("pagesize");
+		page.setIndex(StringUtil.isNull(index)?Integer.parseInt(index):1);
+		page.setPagesize(StringUtil.isNull(pagesize)?Integer.parseInt(pagesize):10);
+		List<Message> messageList=messageService.findAllMessage(page);
+		int allcount=messageService.findAllCount();
+		page.setAllcount(allcount);
+		page.setAllpage((allcount%page.getPagesize()==0)?allcount/page.getPagesize():allcount/page.getPagesize()+1);
+		if(messageList!=null){
+			request.setAttribute("page", page);
+			request.setAttribute("messagelist", messageList);
+			try {
+				request.getRequestDispatcher("messageList.jsp").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}

@@ -3,10 +3,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%
-request.setCharacterEncoding("UTF-8");
-String htmlData = request.getParameter("content1") != null ? request.getParameter("content1") : "";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,44 +41,38 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 </head>
 <body>
 		<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
-					<li class="active"><a href="#">主&nbsp;&nbsp;页</a></li>
-					<li><a href="#">消息查看</a></li>
-					<li><a href="#">消息回复</a></li>
-					<li><a href="#">用户注册</a></li>
-				</ul>
-			</nav>
-			<h3 class="text-muted">日常事务管理系统</h3>
-		</div>
+		<%@ include file="include/header.jsp"%>
 		<div class="messagecontent">
 			<h2>${message.messageTitle }</h2>
 			${message.messageContent }
+			发布人：${message.user.userName }、
+			发布日期：${message.publicTime }
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-10">
 				<br/>
-		    	<button type="button" class="btn btn-success"  name="btn_reply">我要回复</button>
+		    	<button type="button" class="btn btn-success"  id="btn_reply">我要回复</button>
 			</div>
 		</div>
-		<form class="form-horizontal" action="message?option=1" method="post">
-			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-10">
-					<h2>消息回复</h2>
+		<div class="reply">
+			<form class="form-horizontal" action="reply?option=2&messageid=${message.messageId }" method="post">
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-10">
+						<h2>消息回复</h2>
+					</div>
+			  	</div>
+				<div class="form-group">
+					 <div class="col-sm-10">
+						<textarea name="messagecontent" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"></textarea>
+				    </div>
+			  	</div>
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-10">
+			      		<button type="submit" class="btn btn-success"  name="button">全盘就绪：发射</button>
+					</div>
 				</div>
-		  	</div>
-			<div class="form-group">
-				 <div class="col-sm-10">
-					<textarea name="messagecontent" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"><%=htmlspecialchars(htmlData)%></textarea>
-			    </div>
-		  	</div>
-			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-10">
-		      		<button type="submit" class="btn btn-success"  name="button">全盘就绪：发射</button>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>	
 		<footer class="footer">
 		<p>© Company 2015</p>
 		</footer>
@@ -94,13 +84,13 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btn_reply").click(function(){
+			$(".reply").fadeOut(200);
+			$(".reply").css("display","block");
+		});
+		
+	});
+</script>
 </html>
-<%!
-private String htmlspecialchars(String str) {
-	str = str.replaceAll("&", "&amp;");
-	str = str.replaceAll("<", "&lt;");
-	str = str.replaceAll(">", "&gt;");
-	str = str.replaceAll("\"", "&quot;");
-	return str;
-}
-%>

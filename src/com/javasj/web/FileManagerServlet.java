@@ -106,8 +106,7 @@ public class FileManagerServlet extends HttpServlet {
                     hash.put("filetype", fileExt);
                 }
                 hash.put("filename", fileName);
-                hash.put("datetime",
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(file.lastModified()));
+                hash.put("datetime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(file.lastModified()));
                 fileList.add(hash);
             }
         }

@@ -64,18 +64,23 @@ public class UserServlet extends HttpServlet {
 			request.getSession().setAttribute("userstatus", user);
 			if(user.getIsAdmin()==1)
 				try {
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("index.html");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			else
 				try {
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("index.html");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 		}else{
-			System.out.println("用户名或密码错误");
+			try {
+				request.setAttribute("erroinfo", "用户名或密码错误");
+				request.getRequestDispatcher("result.jsp").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	/**
