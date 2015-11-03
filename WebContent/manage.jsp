@@ -15,29 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<div class="container">
-		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
-					<li><a href="index.html">主&nbsp;&nbsp;页</a></li>
-					<c:choose>
-						<c:when test="${sessionScope.userstatus!=null}">
-							<c:choose>
-								<c:when test="${sessionScope.userstatus.isAdmin==1}">
-									<li><a href="manage_1.html">消息管理</a></li>
-									<li><a href="manage.html">用户管理</a></li>
-									<li><a href=".html">批复管理</a></li>
-									<li><a href="#">${sessionScope.userstatus.userName}</a></li>
-								</c:when>
-							</c:choose>
-						</c:when>
-						<c:otherwise>
-							<!-- 无权限操作未登录 -->
-						</c:otherwise>
-					</c:choose>
-				</ul>
-			</nav>
-			<h3 class="text-muted">日常事务管理系统管理界面</h3>
-		</div>
+		<%@ include file="include/adminheader.jsp"%>
 		<div class="jumbotron">
 			<table class="table table-bordered">
 				<tr>
